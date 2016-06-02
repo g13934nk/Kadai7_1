@@ -1,42 +1,40 @@
 package jp.tuyano;
-
+ 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.net.URL;
+import java.util.*;
+ 
+import javax.jdo.*;
 import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-
-//@WebServlet(name = "OrderServlet", urlPatterns = {"/OrderServlet"})
+import javax.servlet.http.*;
+ 
 public class OrderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-
+ 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req,
+            HttpServletResponse resp)
             throws ServletException, IOException {
-        //processRequest(request, response);
-                        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/jsp/order.jsp");
-        dispatcher.forward(request, response);
+        resp.setContentType("text/plain");
+        resp.getWriter().println("入力されていません。");
     }
-
-
+ 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest req,
+            HttpServletResponse resp)
             throws ServletException, IOException {
-        //processRequest(request, response);
-                        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/jsp/kanryou.jsp");
-        dispatcher.forward(request, response);
+        req.setCharacterEncoding("UTF-8");
+        String myform = req.getParameter("myform");
+        String goukei = req.getParameter("goukei");
+        Date date = Calendar.getInstance().getTime();
+        LinkData data = new LinkData(myform,goukei,date);
+        PersistenceManagerFactory factory = PMF.get();
+        PersistenceManager manager = factory.getPersistenceManager();
+        try {
+            manager.makePersistent(data);
+        } finally {
+            manager.close();
+        }
+        resp.sendRedirect("/kanryou.html");
     }
-
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }

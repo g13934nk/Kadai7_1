@@ -12,56 +12,36 @@ public class LinkData {
     private Long id;
      
     @Persistent
-    private String title;
-     
+    private String myform;
+    
     @Persistent
-    private String url;
-     
-    @Persistent
-    private String comment;
-     
+    private String goukei;
+    
     @Persistent
     private Date datetime;
- 
-    public LinkData(String title, String url, String comment, Date datetime) {
+
+    public LinkData(String myform, String goukei,Date datetime) {
         super();
-        this.title = title;
-        this.url = url;
-        this.comment = comment;
+        this.myform = myform;
         this.datetime = datetime;
     }
  
-    public Long getId() {
+    public Long getMyform() {
         return id;
     }
  
-    public void setId(Long id) {
-        this.id = id;
+    public void setMyform(String myform) {
+        this.myform = myform;
     }
  
-    public String getTitle() {
-        return title;
+    public String getGoukei() {
+        return goukei;
     }
  
-    public void setTitle(String title) {
-        this.title = title;
+    public void setGoukei(String goukei) {
+        this.goukei = goukei;
     }
  
-    public String getUrl() {
-        return url;
-    }
- 
-    public void setUrl(String url) {
-        this.url = url;
-    }
- 
-    public String getComment() {
-        return comment;
-    }
- 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
  
     public Date getDatetime() {
         return datetime;
