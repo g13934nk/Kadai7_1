@@ -8,7 +8,7 @@ import javax.jdo.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
  
-public class OrderServlet extends HttpServlet {
+public class AddOrderDataServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
     @Override
@@ -16,7 +16,7 @@ public class OrderServlet extends HttpServlet {
             HttpServletResponse resp)
             throws ServletException, IOException {
         resp.setContentType("text/plain");
-        resp.getWriter().println("入力されていません。");
+        resp.getWriter().println("no url...");
     }
  
     @Override
@@ -24,15 +24,12 @@ public class OrderServlet extends HttpServlet {
             HttpServletResponse resp)
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        /*String myform = req.getParameter("myform");
-        String goukei = req.getParameter("goukei");*/
-        String user = req.getParameter("user");
-        String name = req.getParameter("name");
-        String pass = req.getParameter("pass");
-        String add = req.getParameter("add");
-        
-        Date date = Calendar.getInstance().getTime();
-        LinkData data = new LinkData(user,name,pass,add);
+        String en = req.getParameter("en");
+        String kesi = req.getParameter("kesi");
+        String pen = req.getParameter("pen");
+        String zyo = req.getParameter("zyo");
+        String con = req.getParameter("con");
+        OrderData data = new OrderData(en,kesi,pen,zyo,con);
         PersistenceManagerFactory factory = PMF.get();
         PersistenceManager manager = factory.getPersistenceManager();
         try {

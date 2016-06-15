@@ -17,12 +17,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</welcome-file-list>
 	
 		<servlet>
-    <servlet-name>index_linkdata</servlet-name>
-    <servlet-class>jp.tuyano.OrderServlet</servlet-class>
+    <servlet-name>add_linkdata</servlet-name>
+    <servlet-class>jp.tuyano.AddLinkDataServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-    <servlet-name>index_linkdata</servlet-name>
-    <url-pattern>/OrderServlet</url-pattern>
+    <servlet-name>add_linkdata</servlet-name>
+    <url-pattern>/add</url-pattern>
 </servlet-mapping>
 	
+		<servlet>
+    <servlet-name>add_orderdata</servlet-name>
+    <servlet-class>jp.tuyano.AddOrderDataServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>add_orderdata</servlet-name>
+    <url-pattern>/order</url-pattern>
+</servlet-mapping>
+
+
 </web-app>
