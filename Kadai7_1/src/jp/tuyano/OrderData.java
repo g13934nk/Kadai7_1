@@ -26,9 +26,10 @@ public class OrderData {
     @Persistent
     private String con;
     
-    /*@Persistent
+    /*
+    @Persistent
     private String myform;
-    
+
     @Persistent
     private String goukei;
     
@@ -79,4 +80,5 @@ public class OrderData {
         this.con = con;
     }
     
+
 }
